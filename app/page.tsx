@@ -130,9 +130,7 @@ export default function Home() {
     const fetchNewsOnLoad = async () => {
       setLoading(true);
       try {
-        const response = await fetch(
-          `https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.NEXT_PUBLIC_NEWS_API_KEY}`
-        );
+        const response = await fetch(`/api/news?category=general`)
         const data = await response.json();
         setArticles(data.articles);
         setFilteredArticles([]);
@@ -440,9 +438,7 @@ export default function Home() {
   const fetchNews = async () => {
     setLoading(true);
     try {
-      const response = await fetch(
-        `https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.NEXT_PUBLIC_NEWS_API_KEY}`
-      );
+      const response = await fetch(`/api/news?category=general`)
       const data = await response.json();
       setArticles(data.articles);
       setFilteredArticles(data.articles);
