@@ -90,13 +90,13 @@ export default function Home() {
   const colors = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4'];
 
   const keywords: Record<string, string[]> = {
-    'Technology': ['tech', 'ai', 'software', 'app', 'digital', 'cyber', 'computer', 'internet', 'innovation', 'startup', 'tesla', 'apple', 'google', 'meta', 'robot', 'algorithm'],
-    'Business': ['business', 'market', 'stock', 'economy', 'sales', 'company', 'corporate', 'trade', 'commerce', 'profit', 'earnings', 'investment'],
-    'Sports': ['sport', 'game', 'team', 'player', 'match', 'league', 'championship', 'football', 'basketball', 'baseball', 'soccer', 'nfl', 'nba', 'nhl', 'mlb', 'coach'],
-    'Health': ['health', 'medical', 'disease', 'doctor', 'hospital', 'vaccine', 'virus', 'covid', 'covid-19', 'pandemic', 'wellness', 'fitness', 'mental', 'nutrition', 'medicine'],
-    'Politics': ['politics', 'government', 'president', 'congress', 'senate', 'election', 'vote', 'campaign', 'policy', 'law', 'bill', 'republican', 'democrat', 'political'],
-    'Entertainment': ['entertainment', 'movie', 'film', 'actor', 'music', 'celebrity', 'hollywood', 'show', 'series', 'netflix', 'award', 'grammy', 'oscar', 'song', 'album'],
-    'Science': ['science', 'research', 'study', 'scientist', 'nasa', 'space', 'discovery', 'physics', 'biology', 'climate', 'environment', 'nature', 'experiment']
+    'Technology': ['tech', 'ai', 'software', 'app', 'digital', 'cyber', 'computer', 'internet', 'innovation', 'startup', 'tesla', 'apple', 'google', 'meta', 'robot', 'algorithm', 'data', 'coding', 'developer', 'programming', 'blockchain', 'cryptocurrency', 'ai model', 'machine learning'],
+    'Business': ['business', 'market', 'stock', 'economy', 'sales', 'company', 'corporate', 'trade', 'commerce', 'profit', 'earnings', 'investment', 'finance', 'startup', 'venture', 'deal', 'acquisition', 'quarterly', 'revenue', 'ceo'],
+    'Sports': ['sport', 'game', 'team', 'player', 'match', 'league', 'championship', 'football', 'basketball', 'baseball', 'soccer', 'nfl', 'nba', 'nhl', 'mlb', 'coach', 'tournament', 'athlete', 'score', 'win', 'final', 'tennis', 'cricket'],
+    'Health': ['health', 'medical', 'disease', 'doctor', 'hospital', 'vaccine', 'virus', 'covid', 'covid-19', 'pandemic', 'wellness', 'fitness', 'mental', 'nutrition', 'medicine', 'treatment', 'patient', 'drug', 'clinical', 'research'],
+    'Politics': ['politics', 'government', 'president', 'congress', 'senate', 'election', 'vote', 'campaign', 'policy', 'law', 'bill', 'republican', 'democrat', 'political', 'minister', 'parliament', 'legislation', 'trump', 'biden'],
+    'Entertainment': ['entertainment', 'movie', 'film', 'actor', 'music', 'celebrity', 'hollywood', 'show', 'series', 'netflix', 'award', 'grammy', 'oscar', 'song', 'album', 'premiere', 'release', 'director', 'producer', 'drama'],
+    'Science': ['science', 'research', 'study', 'scientist', 'nasa', 'space', 'discovery', 'physics', 'biology', 'climate', 'environment', 'nature', 'experiment', 'universe', 'planet', 'astronomy', 'data']
   };
 
   // Initialize user and load data
@@ -397,17 +397,17 @@ export default function Home() {
     if (topicsToFilter.size === 0) return articles;
     
     return articles.filter(article => {
-      const titleLower = article.title.toLowerCase();
-      const descriptionLower = article.description ? article.description.toLowerCase() : '';
-      const contentLower = titleLower + ' ' + descriptionLower;
-      
-      return Array.from(topicsToFilter).some(topic => {
-        const topicKeywords = keywords[topic] || [];
-        return topicKeywords.some(keyword => contentLower.includes(keyword));
-      });
+      const text = (article.title + ' ' + (article.description || '')).toLowerCase();
+    const topicArray = Array.from(selectedTopics);
+    
+    const matches = topicArray.filter(topic => 
+      text.includes(topic.toLowerCase())
+    ).length;
+    
+    return matches > 0;
     });
   };
-
+      
   const generateExplanation = async (articleTitle: string, articleIndex: number) => {
     if (explanations[articleIndex]) return;
     
