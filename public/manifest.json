@@ -1,0 +1,32 @@
+{
+    "name": "News Agent - Personalized AI News Aggregator",
+    "short_name": "News Agent",
+    "description": "Personalized news with AI explanations, trending insights, and reading analytics",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "background_color": "#ffffff",
+    "theme_color": "#10b981",
+    "icons": [
+      {
+        "src": "/icon-192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "any"
+      },
+      {
+        "src": "/icon-512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "any"
+      }
+    ],
+    "screenshots": [
+      {
+        "src": "/screenshot-1.png",
+        "sizes": "540x720",
+        "type": "image/png"
+      }
+    ]
+  }
