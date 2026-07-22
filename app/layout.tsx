@@ -21,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+      <meta name="google-site-verification" content="l6MT4RktKJqAKBKzPEj4kexhhCgCCoLee1PkLXfAs5A" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <link rel="apple-touch-icon" href="/icon-192.png" />
         <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
